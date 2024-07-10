@@ -8,10 +8,10 @@ export default function Benefits() {
     <div className="mb-60 mt-40">
       <h1 className="text-5xl font-medium leading-[60px] text-white mb-20 ">
         Elevating Your Experience <br /> With
-        <span className="text-primary"> Exceptional Benefits</span>
+        <span className="text-[#F85606]"> Exceptional Benefits</span>
       </h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-8 md:gap-5 justify-items-center text-gray-400">
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <MdOutlineRateReview />
           </div>
@@ -19,7 +19,7 @@ export default function Benefits() {
             Unlimited <br /> Revisions
           </p>
         </div>
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <MdOutlineTimer />
           </div>
@@ -27,7 +27,7 @@ export default function Benefits() {
             Fast & Reliable <br /> Delivery
           </p>
         </div>
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <RiTeamLine />
           </div>
@@ -35,7 +35,7 @@ export default function Benefits() {
             Team <br /> Collaborations
           </p>
         </div>
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <TiDeviceDesktop />
           </div>
@@ -43,7 +43,7 @@ export default function Benefits() {
             Modern <br /> Design
           </p>
         </div>
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <RiCustomerService2Fill />
           </div>
@@ -51,7 +51,7 @@ export default function Benefits() {
             24/7 Customer <br /> Support
           </p>
         </div>
-        <div className="border border-gray hover:border-primary p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-primary transition duration-300 hover:scale-[1.02]">
+        <div className="border border-gray hover:border-[#F85606] p-3 rounded-lg w-full flex flex-col gap-1 items-center text-gray hover:text-[#F85606] transition duration-300 hover:scale-[1.02]">
           <div className="text-6xl">
             <GiNotebook />
           </div>

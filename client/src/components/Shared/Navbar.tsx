@@ -27,7 +27,7 @@ export default function Navbar() {
           </div>
           {/* dashboard and cart btn  */}
           <div className="font-medium text-lg flex  items-center gap-6">
-            <Link to={"/"}>
+            <Link to={"/dashboard/product-list"}>
               <button className="bg-white py-2 px-4 rounded text-primary">
                 Dashboard
               </button>

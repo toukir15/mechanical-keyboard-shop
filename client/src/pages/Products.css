@@ -1,0 +1,12 @@
+/* Custom overrides */
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 0 !important;
+}
+
+.focus\:ring-ring:focus {
+  --tw-ring-color: transparent !important;
+}
+
+.ring-offset-background {
+  --tw-ring-offset-color: transparent !important;
+}

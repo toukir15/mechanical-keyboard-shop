@@ -130,11 +130,11 @@ const CustomerReviews = () => {
     <div className="h-fit mb-32 ">
       <div className="flex justify-between items-center mb-8 ">
         <div className="mb-5 sm:mb-10 space-y-2 sm:space-y-4">
-          <p className="w-fit bg-[#f8570620] text-xl text-primary py-1.5 px-3 rounded-lg mb-1">
+          <p className="w-fit bg-[#f8570620] text-xl text-[#F85606] py-1.5 px-3 rounded-lg mb-1">
             Testimonial
           </p>
           <h2 className="text-white text-5xl">
-            Client <span className="text-primary"> reviews</span>
+            Client <span className="text-[#F85606]"> reviews</span>
           </h2>
         </div>
 
@@ -142,14 +142,14 @@ const CustomerReviews = () => {
           <div className="flex gap-2 ">
             <button
               aria-label="Click me to see previous review"
-              className="p-4 rounded-full text-white hover:text-[#121212] bg-[#1D1D20] hover:shadow-lg bg-light-gray hover:bg-primary transition-all duration-200"
+              className="p-4 rounded-full text-white hover:text-[#121212] bg-[#1D1D20] hover:shadow-lg bg-light-gray hover:bg-[#F85606] transition-all duration-200"
               onClick={handlePrev}
             >
               <FaArrowLeftLong size={18} />
             </button>
             <button
               aria-label="Click me to see next review"
-              className="p-4 rounded-full text-white hover:text-[#121212] bg-[#1D1D20] hover:shadow-lg bg-light-gray hover:bg-primary transition-all duration-200"
+              className="p-4 rounded-full text-white hover:text-[#121212] bg-[#1D1D20] hover:shadow-lg bg-light-gray hover:bg-[#F85606] transition-all duration-200"
               onClick={handleNext}
             >
               <FaArrowRightLong size={18} />
@@ -171,7 +171,7 @@ const CustomerReviews = () => {
             <SwiperSlide key={review.id} className="w-full">
               <div className="bg-light-gray p-6 md:p-20 rounded-lg flex gap-5 md:gap-20 items-center flex-col sm:flex-row justify-between">
                 <div className="order-2 sm:order-1">
-                  <span className="text-primary">
+                  <span className="text-[#F85606]">
                     <FaQuoteLeft size={60}></FaQuoteLeft>
                   </span>
                   <p className="text-[#BEBBBB] text-lg mt-4 ">
@@ -179,7 +179,7 @@ const CustomerReviews = () => {
                   </p>
 
                   <div className="mt-5 sm:mt-7 md:mt-10">
-                    <p className="font-medium text-primary text-3xl uppercase mb-3 ">
+                    <p className="font-medium text-[#F85606] text-3xl uppercase mb-3 ">
                       {review.customerName}
                     </p>
                     <p className="text-gray uppercase text-xl text-[#BEBBBB]">
@@ -208,14 +208,14 @@ const CustomerReviews = () => {
         <div className="flex gap-2 mt-4">
           <button
             aria-label="Click me to see previous review"
-            className="p-3 rounded-full text-white hover:text-[#121212] hover:shadow-lg bg-light-gray hover:bg-primary transition-all duration-200"
+            className="p-3 rounded-full text-white hover:text-[#121212] hover:shadow-lg bg-light-gray hover:bg-[#F85606] transition-all duration-200"
             onClick={handlePrev}
           >
             <FaArrowLeftLong size={18} />
           </button>
           <button
             aria-label="Click me to see next review"
-            className="p-3 rounded-full text-white hover:text-[#121212] hover:shadow-lg bg-light-gray hover:bg-primary transition-all duration-200"
+            className="p-3 rounded-full text-white hover:text-[#121212] hover:shadow-lg bg-light-gray hover:bg-[#F85606] transition-all duration-200"
             onClick={handleNext}
           >
             <FaArrowRightLong size={18} />

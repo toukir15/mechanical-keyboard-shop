@@ -14,7 +14,7 @@ const BrandMarquee = ({ extendStyle }) => {
         <div className="w-[90%] mx-auto bg-[#1D1D20] py-36 px-8 rounded-2xl">
           <h2 className=" text-5xl font-medium leading-[60px] text-white mb-20">
             The Top Feature <br /> Leading
-            <span className="text-primary">Keyboard Brand</span>
+            <span className="text-[#F85606]"> Keyboard Brand</span>
           </h2>
           <div
             className={`flex flex-wrap gap-14 items-center justify-center ${extendStyle}  `}
