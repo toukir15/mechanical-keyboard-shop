@@ -1,9 +1,14 @@
 import { Input } from "@/components/ui/input";
+import { useAddProductMutation } from "@/redux/features/product/productApi";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
+  const [addProduct, { isLoading, isSuccess, isError, error }] =
+    useAddProductMutation();
   const [addImage, setAddImage] = useState({});
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,8 +25,19 @@ export default function AddProduct() {
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  const project = (data) => {
-    console.log(data);
+  // const project = (data) => {
+  //   addProduct(data);
+  // };
+
+  const project = async (data) => {
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+
+    if (addImage.file) {
+      formData.append("file", addImage.file);
+    }
+    await addProduct(formData);
+    navigate("/dashboard/product-list");
   };
 
   return (
@@ -44,10 +60,32 @@ export default function AddProduct() {
         </div>
         <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
           <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Brand
+          </label>
+          <Input
+            {...register("brand", { required: true })}
+            className="bg-[#D1D5DB]  w-[70%] text-black "
+            type="text"
+            placeholder="Name"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
             Price
           </label>
           <Input
             {...register("price", { required: true })}
+            className="bg-[#D1D5DB]  w-[70%] text-black "
+            type="number"
+            placeholder="Price"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Rating
+          </label>
+          <Input
+            {...register("rating", { required: true })}
             className="bg-[#D1D5DB]  w-[70%] text-black "
             type="number"
             placeholder="Price"
@@ -101,7 +139,15 @@ export default function AddProduct() {
         <div className="flex flex-col md:flex-row w-full md:items-center ">
           <div className="md:w-[30%] mb-1"></div>
           <div className="md:w-[70%] flex gap-6 ">
-            <button className="w-1/2 bg-orange-500 hover:bg-orange-600 transition duration-150 text-black font-medium py-3 px-4  rounded-lg">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-1/2 ${
+                isLoading
+                  ? "bg-orange-100"
+                  : "bg-orange-500 hover:bg-orange-600"
+              }  transition duration-150 text-black font-medium py-3 px-4  rounded-lg`}
+            >
               Add Project
             </button>
             <button className="w-1/2 border border-orange-600 hover:border-orange-700 text-orange-600 hover:text-orange-700 py-3 px-4 rounded-lg">

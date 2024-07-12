@@ -6,7 +6,7 @@ import LinkedinLottie from "../lottie/LinkedinLottie";
 import YoutubeLottie from "../lottie/YoutubeLottie";
 export default function Footer() {
   return (
-    <div className="footer text-white">
+    <div className="footer text-white bg-[#0F172A]">
       <div className="container mx-auto px-12 py-20">
         <div className="flex justify-between">
           {/* footer first column  */}
