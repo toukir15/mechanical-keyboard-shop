@@ -15,14 +15,14 @@ export default function AddProduct() {
   const [addImage, setAddImage] = useState<AddImageState>({});
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-
   const handleAddImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (r) => {
+      reader.onload = () => {
+        const result = reader.result as string; // Asserting reader.result as string
         setAddImage({
-          placeholder: r.target?.result as string,
+          placeholder: result,
           file: file,
         });
       };
@@ -34,10 +34,9 @@ export default function AddProduct() {
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
 
-    if (addImage.file) {
+    if (addImage.file!) {
       formData.append("file", addImage.file);
     }
-
     await addProduct(formData);
     navigate("/dashboard/product-list");
   };
@@ -49,9 +48,8 @@ export default function AddProduct() {
         method="post"
         className="flex lg:w-[50%] lg:mx-auto w-full px-4 flex-col text-white "
       >
-        {/* Form inputs */}
         <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
-          <label className="md:w-[30%] mb-1 " htmlFor="productName">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
             Product Name
           </label>
           <Input
@@ -61,16 +59,56 @@ export default function AddProduct() {
             placeholder="Product name"
           />
         </div>
-
-        {/* Other input fields */}
-
-        {/* Image upload */}
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Brand
+          </label>
+          <Input
+            {...register("brand", { required: true })}
+            className="bg-[#D1D5DB]  lg:w-[70%] text-black "
+            type="text"
+            placeholder="Brand"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Price
+          </label>
+          <Input
+            {...register("price", { required: true })}
+            className="bg-[#D1D5DB]  lg:w-[70%] text-black "
+            type="number"
+            placeholder="Price"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Rating
+          </label>
+          <Input
+            {...register("rating", { required: true })}
+            className="bg-[#D1D5DB]  lg:w-[70%] text-black "
+            type="number"
+            placeholder="Rating"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Description
+          </label>
+          <Input
+            {...register("description", { required: true })}
+            className="bg-[#D1D5DB]  lg:w-[70%] text-black "
+            type="text"
+            placeholder="Description"
+          />
+        </div>
         <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
           <label className="md:w-[30%] mb-1" htmlFor="addImage">
             Add Image
           </label>
           <input
-            onChange={handleAddImageChange}
+            onChange={(e) => handleAddImageChange(e)}
             type="file"
             id="addImage"
             className="hidden"
@@ -87,8 +125,18 @@ export default function AddProduct() {
             </div>
           )}
         </div>
+        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+          <label className="md:w-[30%] mb-1 " htmlFor="projectName">
+            Available Quantity
+          </label>
+          <Input
+            {...register("availableQuantity", { required: true })}
+            className="bg-[#D1D5DB]  lg:w-[70%] text-black "
+            type="text"
+            placeholder="Available quantity"
+          />
+        </div>
 
-        {/* Submit and cancel buttons */}
         <div className="flex flex-col md:flex-row w-full md:items-center ">
           <div className="md:w-[30%] mb-1"></div>
           <div className="md:lg:w-[70%] flex gap-6 ">
@@ -101,7 +149,7 @@ export default function AddProduct() {
                   : "bg-orange-600 hover:bg-orange-700"
               }  transition duration-150 text-black font-medium py-3 px-4  rounded-lg`}
             >
-              Add Product
+              Add Project
             </button>
             <button
               disabled={isLoading}
