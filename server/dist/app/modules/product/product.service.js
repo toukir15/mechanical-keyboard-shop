@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductServices = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
 const sendImageToCloudinary_1 = require("../../utils/sendImageToCloudinary");
 const product_model_1 = require("./product.model");
 const createProductIntoDB = (payload, file) => __awaiter(void 0, void 0, void 0, function* () {
@@ -33,23 +37,34 @@ const deleteProductIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* 
     return result;
 });
 const updateProductIntoDB = (id, payload, file) => __awaiter(void 0, void 0, void 0, function* () {
-    const isProductExist = yield product_model_1.Product.findById(id, { isDeleted: false });
+    // Validate ObjectId
+    if (!mongoose_1.default.Types.ObjectId.isValid(id)) {
+        throw new Error(`Invalid product ID: ${id}`);
+    }
+    // Check if the product exists
+    const isProductExist = yield product_model_1.Product.findOne({ _id: id, isDeleted: false });
     if (!isProductExist) {
-        console.log('product is not available');
+        throw new Error('Product is not available');
     }
-    // if the file is not undefind
-    let cloudinayImgData;
-    let modifiedPayload = payload;
-    if (file) {
-        cloudinayImgData = yield (0, sendImageToCloudinary_1.sendImageToCloudinary)(payload.brand + payload.availableQuantity + payload.rating, file === null || file === void 0 ? void 0 : file.path);
-    }
-    console.log(cloudinayImgData === null || cloudinayImgData === void 0 ? void 0 : cloudinayImgData.secure_url);
-    if (cloudinayImgData === null || cloudinayImgData === void 0 ? void 0 : cloudinayImgData.secure_url) {
-        modifiedPayload = Object.assign(Object.assign({}, payload), { img: cloudinayImgData.secure_url });
-    }
-    const updateProduct = yield product_model_1.Product.findOneAndUpdate({ _id: id }, modifiedPayload, {
+    // Initialize modifiedPayload with the original payload
+    // let modifiedPayload = { ...payload }
+    // If the file is provided, upload it to Cloudinary
+    // if (file) {
+    //   const cloudinayImgData = await sendImageToCloudinary(
+    //     `${payload.brand!}${payload.availableQuantity}${payload.rating}`,
+    //     file.path as string,
+    //   )
+    // If the image upload is successful, update the img property
+    //   if (cloudinayImgData?.secure_url) {
+    //     modifiedPayload = {
+    //       ...payload,
+    //       img: cloudinayImgData.secure_url as string,
+    //     }
+    //   }
+    // }
+    // Update the product in the database
+    const updateProduct = yield product_model_1.Product.findByIdAndUpdate(isProductExist._id, payload, {
         new: true,
-        runValidators: true,
     });
     return updateProduct;
 });

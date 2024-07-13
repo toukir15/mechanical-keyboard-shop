@@ -41,34 +41,45 @@ const updateProductIntoDB = async (
   payload: TProduct,
   file?: Express.Multer.File,
 ) => {
-  const isProductExist = await Product.findById(id, { isDeleted: false })
+  // Validate ObjectId
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new Error(`Invalid product ID: ${id}`)
+  }
+
+  // Check if the product exists
+  const isProductExist = await Product.findOne({ _id: id, isDeleted: false })
   if (!isProductExist) {
-    console.log('product is not available')
+    throw new Error('Product is not available')
   }
 
-  // if the file is not undefind
-  let cloudinayImgData
-  let modifiedPayload = payload
-  if (file) {
-    cloudinayImgData = await sendImageToCloudinary(
-      payload.brand! + payload.availableQuantity + payload.rating,
-      file?.path as string,
-    )
-  }
+  // Initialize modifiedPayload with the original payload
+  // let modifiedPayload = { ...payload }
 
-  console.log(cloudinayImgData?.secure_url)
-  if (cloudinayImgData?.secure_url) {
-    modifiedPayload = { ...payload, img: cloudinayImgData.secure_url as string }
-  }
+  // If the file is provided, upload it to Cloudinary
+  // if (file) {
+  //   const cloudinayImgData = await sendImageToCloudinary(
+  //     `${payload.brand!}${payload.availableQuantity}${payload.rating}`,
+  //     file.path as string,
+  //   )
 
-  const updateProduct = await Product.findOneAndUpdate(
-    { _id: id },
-    modifiedPayload,
+  // If the image upload is successful, update the img property
+  //   if (cloudinayImgData?.secure_url) {
+  //     modifiedPayload = {
+  //       ...payload,
+  //       img: cloudinayImgData.secure_url as string,
+  //     }
+  //   }
+  // }
+
+  // Update the product in the database
+  const updateProduct = await Product.findByIdAndUpdate(
+    isProductExist._id,
+    payload,
     {
       new: true,
-      runValidators: true,
     },
   )
+
   return updateProduct
 }
 
