@@ -5,9 +5,10 @@ import httpStatus from 'http-status'
 
 const createProduct = catchAsync(async (req, res, next) => {
   const productData = req.body
-  console.log(productData)
-  const file = req.file
+  const file: Express.Multer.File | undefined = req.file
+
   const result = await ProductServices.createProductIntoDB(productData, file)
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -39,7 +40,6 @@ const getSingleProduct = catchAsync(async (req, res, next) => {
 
 const deleteProduct = catchAsync(async (req, res, next) => {
   const id = req.params.id
-  console.log(id)
   const result = await ProductServices.deleteProductIntoDB(id)
   sendResponse(res, {
     statusCode: httpStatus.OK,

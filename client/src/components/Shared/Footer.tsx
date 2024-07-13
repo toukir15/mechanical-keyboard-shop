@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import keyboard from "../../../public/images/keyboard.png";
+import keyboard from "/images/keyboard.png";
 import FacebookLottie from "../lottie/FacebookLottie";
 import GithubLottie from "../lottie/GithubLottie";
 import LinkedinLottie from "../lottie/LinkedinLottie";
 import YoutubeLottie from "../lottie/YoutubeLottie";
 export default function Footer() {
   return (
-    <div className="footer text-white bg-[#0F172A]">
-      <div className="container mx-auto px-12 py-20">
-        <div className="flex justify-between">
+    <div className="footer text-white bg-[#000000]">
+      <div className="container lg:mx-auto px-4 lg:px-12 py-6 lg:py-20">
+        <div className="lg:flex justify-between">
           {/* footer first column  */}
           <div>
             {/* Logo  */}
@@ -20,13 +20,15 @@ export default function Footer() {
                   alt=""
                 />
               </div>
-              <h3 className="text-[28px] text-white ">KeyGenius</h3>
+              <h3 className="lg:text-[28px] text-[24px] text-white ">
+                KeyGenius
+              </h3>
             </div>
-            <p className="mt-8">
+            <p className="mt-2 lg:mt-8">
               From 2019, we've empowered 100+ fast-growing <br /> companies
               across 10+ industries with impactful solutions.
             </p>
-            <div className="mt-8 flex gap-6">
+            <div className="mt-3 lg:mt-8 flex gap-6">
               <Link to={"/"}>
                 <button className="bg-white p-2 rounded-full shadow-lg ">
                   <FacebookLottie />
@@ -50,14 +52,14 @@ export default function Footer() {
             </div>
           </div>
           {/* footer second column  */}
-          <div className="flex flex-col gap-4 text-lg">
+          <div className="flex flex-col mt-6 lg:mt-0 lg:gap-4 text-md lg:text-lg">
             <Link to={"/"}>Home</Link>
             <Link to={"/"}>Products</Link>
             <Link to={"/"}>About Us</Link>
             <Link to={"/"}>Contact Us</Link>
           </div>
           {/* footer third column  */}
-          <div className="flex flex-col gap-4 text-lg">
+          <div className="flex flex-col mt-6 lg:mt-0 lg:gap-4 text-md lg:text-lg">
             <button className="text-start">Online Delivery</button>
             <button className="text-start">Refund and Return Policy</button>
             <button className="text-start">Online Delivery</button>
@@ -71,7 +73,7 @@ export default function Footer() {
               Square, Dhaka 1000
             </p>
             <p className="font-medium text-start mt-4">Email:</p>
-            <p className="mt-4">keygenius@gmail.com</p>
+            <p className="lg:mt-4">keygenius@gmail.com</p>
           </div>
         </div>
       </div>

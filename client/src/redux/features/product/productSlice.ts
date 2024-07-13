@@ -1,18 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import type { PayloadAction } from "@reduxjs/toolkit";
-
-export interface CounterState {
+export interface productState {
   value: number;
 }
 
-const initialState: CounterState = {
+const initialState: productState = {
   value: 0,
 };
 
 export const productSlice = createSlice({
-  name: "counter",
+  name: "product",
   initialState,
   reducers: {},
 });
-
-export default productSlice.reducer;

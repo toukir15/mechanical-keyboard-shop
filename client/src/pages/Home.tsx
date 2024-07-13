@@ -9,14 +9,16 @@ export default function Home() {
     <div>
       {/* hero section  */}
       <Hero />
-      {/* benefit section  */}
-      <Benifits />
-      {/* feture products  */}
-      <FeatureProducts />
-      {/* brand section  */}
-      <BrandMarquee extendStyle={""} />
-      {/* review  */}
-      <CustomerReviews />
+      <div className="container mx-auto">
+        {/* benefit section  */}
+        <Benifits />
+        {/* feture products  */}
+        <FeatureProducts />
+        {/* brand section  */}
+        <BrandMarquee />
+        {/* review  */}
+        <CustomerReviews />
+      </div>
     </div>
   );
 }

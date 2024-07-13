@@ -1,6 +1,3 @@
-import { CiStar } from "react-icons/ci";
-import Rating from "react-rating";
-import { FaStar } from "react-icons/fa6";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -10,6 +7,7 @@ import {
   useAddCartMutation,
   useGetCartsQuery,
 } from "@/redux/features/cart/cartApi";
+import { Rating } from "@smastrom/react-rating";
 
 export default function ProductDetails() {
   const url = window.location.href;
@@ -36,30 +34,35 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="text-white py-40  px-20 ">
-      <div className="flex">
+    <div className="text-white lg:py-40 lg:px-20 mb-12 lg:mb-0 container mx-auto px-4">
+      <div className="lg:flex">
         <div className="flex-1 flex justify-center">
-          <img src={productData?.data.img} className="w-[75%]" alt="" />
+          <img src={productData?.data.img} className="lg:w-[75%]" alt="" />
         </div>
         <div className="flex-1">
-          <h3 className="text-4xl leading-[60px]">{productData?.data.name}</h3>
-          <h6 className="mt-6 text-2xl">Brand: {productData?.data.brand}</h6>
-          <h6 className="mt-6 text-2xl">
+          <h3 className=" text-2xl lg:text-4xl mt-2 lg:mt-0 lg:leading-[60px]">
+            {productData?.data.name}
+          </h3>
+          <h6 className="lg:mt-6 mt-3 text-xl lg:text-2xl">
+            Brand: {productData?.data.brand}
+          </h6>
+          <h6 className="lg:mt-6 text-xl lg:text-2xl">
             Available Quantiy: {productData?.data.availableQuantity}
           </h6>
-          <h6 className="mt-6 text-2xl">Price: ${productData?.data.price}</h6>
-          <h6 className="mt-6 text-2xl flex">
+          <h6 className="lg:mt-6 text-xl lg:text-2xl">
+            Price: ${productData?.data.price}
+          </h6>
+          <h6 className="lg:mt-6 text-xl lg:text-2xl flex">
             <p>Rattings: </p>
+
             <Rating
-              className="relative top-1 left-2"
-              initialRating={productData?.data.rating}
-              readonly
-              emptySymbol={<CiStar />}
-              fullSymbol={<FaStar className="text-orange-600" />}
+              value={productData?.data.rating}
+              style={{ maxWidth: 100 }}
+              readOnly={true}
             />
           </h6>
-          <div className="flex mt-8 gap-6">
-            <div className="flex gap-4 border py-3 justify-between px-4 w-[19%] text-xl ">
+          <div className="flex mt-4 lg:mt-8 gap-4 lg:gap-6">
+            <div className="flex gap-4 border py-2 lg:py-3 justify-between px-4 lg:w-[19%] text-xl ">
               <button
                 disabled={counter <= 1}
                 onClick={() => setCounter(counter - 1)}
@@ -99,10 +102,12 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <h5 className="bg-[#2F1B11] w-fit py-1  text-orange-600 text-2xl px-5 mt-20">
+      <h5 className="bg-[#2F1B11] w-fit py-1  text-orange-600 text-xl lg:text-2xl px-5 mt-10 lg:mt-20">
         Description
       </h5>
-      <p className="mt-6 leading-8">{productData?.data.description}</p>
+      <p className="mt-3 lg:mt-6 leading-6 text-justify lg:text-left lg:leading-8">
+        {productData?.data.description}
+      </p>
     </div>
   );
 }

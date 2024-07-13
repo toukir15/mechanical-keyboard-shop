@@ -18,7 +18,6 @@ const createCartIntoDB = async (payload: TCart) => {
       { $inc: { cartQuantity: payload.cartQuantity } },
       { new: true },
     )
-    console.log(updateCart)
     return updateCart
   } else {
     const result = await Cart.create(payload)

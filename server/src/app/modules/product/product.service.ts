@@ -4,11 +4,11 @@ import { Product } from './product.model'
 
 const createProductIntoDB = async (
   payload: TProduct,
-  file: Record<string, unknown>,
+  file?: Express.Multer.File,
 ) => {
   const cloudinayImgData = await sendImageToCloudinary(
     payload.brand + payload.availableQuantity + payload.rating,
-    file.path as string,
+    file?.path as string,
   )
   const data = { ...payload, img: cloudinayImgData.secure_url }
   const result = await Product.create(data)
@@ -16,7 +16,9 @@ const createProductIntoDB = async (
 }
 
 const getProductsFromDB = async () => {
-  const result = await Product.find({ isDeleted: false })
+  const result = await Product.find({ isDeleted: false }).sort({
+    createdAt: -1,
+  })
   return result
 }
 const getSingleProduct = async (id: string) => {
