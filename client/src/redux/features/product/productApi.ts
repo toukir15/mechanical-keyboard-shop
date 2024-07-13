@@ -7,13 +7,14 @@ export const productApi = baseApi.injectEndpoints({
         url: `/products`,
         method: "GET",
       }),
-      providesTags: ["product"],
+      providesTags: ["products"],
     }),
     getProduct: builder.query({
       query: (id) => ({
         url: `/products/${id}`,
         method: "GET",
       }),
+      providesTags: ["product"],
     }),
     addProduct: builder.mutation({
       query: (payload) => {
@@ -23,7 +24,17 @@ export const productApi = baseApi.injectEndpoints({
           body: payload,
         };
       },
-      invalidatesTags: ["product"],
+      invalidatesTags: ["products", "product"],
+    }),
+    editProduct: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `/products`,
+          method: "PATCH",
+          body: payload,
+        };
+      },
+      invalidatesTags: ["products", "product"],
     }),
     deleteProduct: builder.mutation({
       query: (id) => {
@@ -32,7 +43,7 @@ export const productApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: ["product"],
+      invalidatesTags: ["product", "product"],
     }),
   }),
 });
@@ -42,4 +53,5 @@ export const {
   useAddProductMutation,
   useDeleteProductMutation,
   useGetProductQuery,
+  useEditProductMutation,
 } = productApi;

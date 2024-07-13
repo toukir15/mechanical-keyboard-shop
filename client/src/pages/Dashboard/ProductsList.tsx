@@ -122,7 +122,11 @@ export default function ProductsList() {
                       </button>
                     </td>
                     <td className="py-3 px-4 pl-8 text-start">
-                      <button>
+                      <button
+                        onClick={() =>
+                          navigate(`/dashboard/edit-product/${product._id}`)
+                        }
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"

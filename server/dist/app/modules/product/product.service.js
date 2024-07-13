@@ -32,9 +32,31 @@ const deleteProductIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* 
     const result = yield product_model_1.Product.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
     return result;
 });
+const updateProductIntoDB = (id, payload, file) => __awaiter(void 0, void 0, void 0, function* () {
+    const isProductExist = yield product_model_1.Product.findById(id, { isDeleted: false });
+    if (!isProductExist) {
+        console.log('product is not available');
+    }
+    // if the file is not undefind
+    let cloudinayImgData;
+    let modifiedPayload = payload;
+    if (file) {
+        cloudinayImgData = yield (0, sendImageToCloudinary_1.sendImageToCloudinary)(payload.brand + payload.availableQuantity + payload.rating, file === null || file === void 0 ? void 0 : file.path);
+    }
+    console.log(cloudinayImgData === null || cloudinayImgData === void 0 ? void 0 : cloudinayImgData.secure_url);
+    if (cloudinayImgData === null || cloudinayImgData === void 0 ? void 0 : cloudinayImgData.secure_url) {
+        modifiedPayload = Object.assign(Object.assign({}, payload), { img: cloudinayImgData.secure_url });
+    }
+    const updateProduct = yield product_model_1.Product.findOneAndUpdate({ _id: id }, modifiedPayload, {
+        new: true,
+        runValidators: true,
+    });
+    return updateProduct;
+});
 exports.ProductServices = {
     createProductIntoDB,
     getProductsFromDB,
     deleteProductIntoDB,
     getSingleProduct,
+    updateProductIntoDB,
 };
