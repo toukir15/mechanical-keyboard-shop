@@ -80,6 +80,7 @@ export default function EditProduct() {
             Product Name
           </label>
           <Input
+            required
             {...register("productName", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="text"
@@ -91,6 +92,7 @@ export default function EditProduct() {
             Brand
           </label>
           <Input
+            required
             {...register("brand", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="text"
@@ -102,6 +104,7 @@ export default function EditProduct() {
             Price
           </label>
           <Input
+            required
             {...register("price", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="number"
@@ -113,6 +116,7 @@ export default function EditProduct() {
             Rating
           </label>
           <Input
+            required
             {...register("rating", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="number"
@@ -124,6 +128,7 @@ export default function EditProduct() {
             Description
           </label>
           <Input
+            required
             {...register("description", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="text"
@@ -135,6 +140,7 @@ export default function EditProduct() {
             Add Image
           </label>
           <input
+          required
             onChange={handleAddImageChange}
             type="file"
             id="addImage"
@@ -162,6 +168,7 @@ export default function EditProduct() {
             Available Quantity
           </label>
           <Input
+            required
             {...register("availableQuantity", { required: true })}
             className="bg-[#D1D5DB] lg:w-[70%] text-black"
             type="text"
