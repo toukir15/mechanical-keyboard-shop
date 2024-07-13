@@ -5,7 +5,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   tagTypes: ["product", "cart"],
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://mechanical-keyboard-shop-server.onrender.com/api/v1",
+  }),
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
       query: (name) => `pokemon/${name}`,

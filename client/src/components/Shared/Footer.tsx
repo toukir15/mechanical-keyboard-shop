@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import keyboard from "/images/keyboard.png";
-import FacebookLottie from "../lottie/FacebookLottie";
-import GithubLottie from "../lottie/GithubLottie";
-import LinkedinLottie from "../lottie/LinkedinLottie";
-import YoutubeLottie from "../lottie/YoutubeLottie";
+import {
+  FaFacebookF,
+  FaGithub,
+  FaLinkedinIn,
+  FaXTwitter,
+} from "react-icons/fa6";
 export default function Footer() {
   return (
     <div className="footer text-white bg-[#000000]">
@@ -30,23 +32,23 @@ export default function Footer() {
             </p>
             <div className="mt-3 lg:mt-8 flex gap-6">
               <Link to={"/"}>
-                <button className="bg-white p-2 rounded-full shadow-lg ">
-                  <FacebookLottie />
+                <button className="bg-white text-blue-500 p-3 text-2xl rounded-full shadow-lg ">
+                  <FaFacebookF />
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="bg-white p-2 rounded-full shadow-lg ">
-                  <GithubLottie />
+                <button className="bg-white text-black p-3 text-2xl rounded-full shadow-lg ">
+                  <FaGithub />
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="bg-white p-2 rounded-full shadow-lg ">
-                  <LinkedinLottie />
+                <button className="bg-white text-blue-600 p-3 text-2xl rounded-full shadow-lg ">
+                  <FaLinkedinIn />
                 </button>
               </Link>
               <Link to={"/"}>
-                <button className="bg-white p-2 rounded-full shadow-lg ">
-                  <YoutubeLottie />
+                <button className="bg-white text-black p-3 text-2xl rounded-full shadow-lg ">
+                  <FaXTwitter />
                 </button>
               </Link>
             </div>
