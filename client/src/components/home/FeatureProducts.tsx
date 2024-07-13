@@ -11,12 +11,12 @@ export default function FeatureProducts() {
         <span className="text-[#F85606]">Must-Have</span> Keyboards <br /> of
         the Season
       </h1>
-      <div className="lg:mt-32 mt-6 gap-4 grid grid-cols-1 lg:grid-cols-6">
+      <div className="lg:mt-32 mt-6 gap-x-8 grid grid-cols-1 lg:grid-cols-6">
         {productsData?.data.slice(0, 6).map((product: TProduct) => {
           const { name, img, brand, rating, price, availableQuantity, _id } =
             product;
           return (
-            <div className="w-full md:w-[250px] bg-[#1c1c1edc] border border-gray-500 rounded-lg shadow-lg text-gray-100">
+            <div className="w-full md:w-[240px] bg-[#1c1c1edc] border border-gray-500 rounded-lg shadow-lg text-gray-100">
               <div className="pt-3 px-3 mx-auto min-h-[230px]">
                 <img src={img} className="rounded-lg min-h-[230px]" alt="" />
               </div>

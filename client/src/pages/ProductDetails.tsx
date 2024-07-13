@@ -1,6 +1,6 @@
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetProductQuery } from "@/redux/features/product/productApi";
 import { useState } from "react";
 import {
@@ -10,6 +10,7 @@ import {
 import { Rating } from "@smastrom/react-rating";
 
 export default function ProductDetails() {
+  const navigate = useNavigate();
   const url = window.location.href;
   const parts = url.split("/");
   const id = parts[parts.length - 1];
@@ -28,9 +29,10 @@ export default function ProductDetails() {
     return <p>Loading...</p>;
   }
 
-  const handleAddToCart = (id: string) => {
+  const handleAddToCart = async (id: string) => {
     const cartData = { product: id, cartQuantity: counter };
-    addCart(cartData);
+    await addCart(cartData);
+    navigate("/cart");
   };
 
   return (
@@ -91,13 +93,12 @@ export default function ProductDetails() {
                 <GoPlus />
               </button>
             </div>
-            <Link
+            <button
               onClick={() => handleAddToCart(productData?.data._id)}
-              to={"/cart"}
               className=" px-4 w-[50%] bg-orange-500 hover:bg-orange-600 transition duration-150 text-black font-medium  flex justify-center items-center "
             >
               Add to Cart
-            </Link>
+            </button>
           </div>
         </div>
       </div>

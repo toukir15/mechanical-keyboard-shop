@@ -53,6 +53,7 @@ export default function AddProduct() {
             Product Name
           </label>
           <Input
+            required
             {...register("productName", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="text"
@@ -64,6 +65,7 @@ export default function AddProduct() {
             Brand
           </label>
           <Input
+            required
             {...register("brand", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="text"
@@ -75,6 +77,7 @@ export default function AddProduct() {
             Price
           </label>
           <Input
+            required
             {...register("price", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="number"
@@ -86,6 +89,7 @@ export default function AddProduct() {
             Rating
           </label>
           <Input
+            required
             {...register("rating", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="number"
@@ -97,6 +101,7 @@ export default function AddProduct() {
             Description
           </label>
           <Input
+            required
             {...register("description", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="text"
@@ -108,6 +113,7 @@ export default function AddProduct() {
             Add Image
           </label>
           <input
+            required
             onChange={(e) => handleAddImageChange(e)}
             type="file"
             id="addImage"
@@ -130,6 +136,7 @@ export default function AddProduct() {
             Available Quantity
           </label>
           <Input
+            required
             {...register("availableQuantity", { required: true })}
             className="bg-[#D1D5DB]  lg:w-[70%] text-black "
             type="text"

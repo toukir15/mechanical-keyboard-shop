@@ -93,7 +93,6 @@ export default function ProductsList() {
           {productsData?.data.length > 0 && (
             <tbody>
               {productsData.data.map((product: TProduct) => {
-                console.log(product);
                 return (
                   <tr
                     key={product._id}

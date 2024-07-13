@@ -4,17 +4,17 @@ import {
   useEditProductMutation,
   useGetProductQuery,
 } from "@/redux/features/product/productApi";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-interface AddImageState {
-  placeholder?: string;
-  file?: File | null;
-}
+// interface AddImageState {
+//   placeholder?: string;
+//   file?: File | null;
+// }
 
 export default function EditProduct() {
-  const [addImage, setAddImage] = useState<AddImageState>({});
+  // const [addImage, setAddImage] = useState<AddImageState>({});
   const navigate = useNavigate();
 
   // Get product id from params
@@ -42,29 +42,28 @@ export default function EditProduct() {
     }
   }, [productData, setValue]);
 
-  const handleAddImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = reader.result as string;
-        setAddImage({
-          placeholder: result,
-          file: file,
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleAddImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const result = reader.result as string;
+  //       setAddImage({
+  //         placeholder: result,
+  //         file: file,
+  //       });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const project = async (data: any) => {
-    console.log({ ...data, id });
     const formData = new FormData();
     formData.append("data", JSON.stringify({ ...data, id }));
 
-    if (addImage.file) {
-      formData.append("file", addImage.file);
-    }
+    // if (addImage.file) {
+    //   formData.append("file", addImage.file);
+    // }
     await editProduct(formData);
     navigate("/dashboard/product-list");
   };
@@ -131,7 +130,7 @@ export default function EditProduct() {
             placeholder="Description"
           />
         </div>
-        <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
+        {/* <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
           <label className="md:w-[30%] mb-1" htmlFor="addImage">
             Add Image
           </label>
@@ -148,7 +147,7 @@ export default function EditProduct() {
             Upload File
           </label>
           {productData?.data?.img && addImage.placeholder && (
-            <div className="border p-2 ml-2">
+            <div className="border hidden p-2 ml-2">
               <img className="h-[40px]" src={addImage.placeholder} alt="" />
             </div>
           )}
@@ -157,7 +156,7 @@ export default function EditProduct() {
               <img className="h-[40px]" src={productData?.data?.img} alt="" />
             </div>
           )}
-        </div>
+        </div> */}
         <div className="flex flex-col md:flex-row w-full md:items-center mb-2 md:mb-6">
           <label className="md:w-[30%] mb-1" htmlFor="projectName">
             Available Quantity
