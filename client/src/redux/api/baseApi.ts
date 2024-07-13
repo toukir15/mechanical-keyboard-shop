@@ -6,7 +6,7 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   tagTypes: ["products", "product", "cart"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1",
+    baseUrl: "https://mechanical-keyboard-shop-server.onrender.com/api/v1",
   }),
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
