@@ -5,7 +5,7 @@ import { GiNotebook } from "react-icons/gi";
 
 export default function Benefits() {
   return (
-    <div className="mb-60 mt-0 lg:mt-40 px-4">
+    <div className="mb-10 mt-0 lg:mt-40 px-4">
       <h1 className=" text-2xl lg:text-5xl font-medium lg:leading-[60px] text-white mb-6 lg:mb-32">
         Elevating Your Experience <br /> With
         <span className="text-[#F85606]"> Exceptional Benefits</span>

@@ -3,6 +3,8 @@ import Hero from "../components/home/Hero";
 import BrandMarquee from "../components/home/BrandMarquee";
 import FeatureProducts from "../components/home/FeatureProducts";
 import CustomerReviews from "../components/home/CustomerReview";
+import KeyboardSize from "@/components/home/KeyboardSize";
+import KeyboardSwitches from "@/components/home/KeyboardSwitches";
 
 export default function Home() {
   return (
@@ -14,6 +16,10 @@ export default function Home() {
         <Benifits />
         {/* feture products  */}
         <FeatureProducts />
+        {/* shop keyboard by size  */}
+        <KeyboardSize />
+        {/* keyboard switches  */}
+        <KeyboardSwitches />
         {/* brand section  */}
         <BrandMarquee />
         {/* review  */}

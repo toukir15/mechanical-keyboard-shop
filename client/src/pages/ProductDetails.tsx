@@ -8,6 +8,7 @@ import {
   useGetCartsQuery,
 } from "@/redux/features/cart/cartApi";
 import { Rating } from "@smastrom/react-rating";
+import Loading from "@/components/loading/Loading";
 
 export default function ProductDetails() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function ProductDetails() {
   const [counter, setCounter] = useState(0);
 
   if (isProductLoading || isCartLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   const handleAddToCart = async (id: string) => {

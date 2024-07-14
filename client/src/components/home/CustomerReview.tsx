@@ -8,35 +8,37 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
-import albert from "/images/review/albert.jpeg";
+import toukir from "/images/review/toukir.jpg";
+import shiam from "/images/review/shiam.jpg";
+import sagor from "/images/review/sagor.jpg";
 
 const reviews = [
   {
     id: 2,
-    customerImg: albert,
-    customerName: "albert",
+    customerImg: toukir,
+    customerName: "Toukir Ahmed",
     customerDesignation: "founder of laterhub",
     feedbackTitle: "Exceptional Service",
     feedbackMessage:
-      "The Developerlook team is exceptional. They are responsive and display a commendable work ethic. The team is determined to find solutions, even if it involves investing substantial time to resolve issues. Their expertise goes beyond web development as they were able to offer valuable consultations on cyber security, cloud server management and business transformation. We cannot recommend Developerlook highly enough and look forward to continuing our fruitful collaboration.",
+      "I recently purchased the KeyGenius Pro Mechanical Keyboard, and I am blown away by the quality and performance. The tactile feedback is perfect for typing and gaming, and the customizable RGB lighting is a fantastic touch. Highly recommend KeyGenius for anyone looking for top-notch mechanical keyboards!",
   },
   {
     id: 3,
-    customerImg: albert,
-    customerName: "zach",
+    customerImg: shiam,
+    customerName: "Toukir Ahmed",
     customerDesignation: "founder of adventure fit dojo",
     feedbackTitle: "Quality Gear",
     feedbackMessage:
-      "Our experience with the Developerlook team was outstanding. They exhibited high professionalism throughout the project. Their communication was excellent, making the collaboration smooth and effortless. The team adeptly navigated us through numerous business and technological challenges, proving instrumental in the commencement of our business. We will undoubtedly engage the expertise of the Developerlook team for our future projects.",
+      "I've been using mechanical keyboards for years, and the KeyGenius MX is by far the best I've ever owned. The build quality is solid, and the key switches are incredibly responsive. The customer service was excellent, too – they answered all my questions promptly. I'll definitely be buying from KeyGenius again!",
   },
   {
     id: 4,
-    customerImg: albert,
-    customerName: "andrew",
+    customerImg: sagor,
+    customerName: "Shiam Shikder",
     customerDesignation: "founder of online super tutors",
     feedbackTitle: "Fast Shipping",
     feedbackMessage:
-      "We cannot recommend Developerlook highly enough! From initiation to delivery and beyond, the team ensures everything aligns perfectly with the requirements, while offering insightful suggestions to ensure an outstanding final product. They go above and beyond, incorporating extra features effectively. Their assistance with SEO and marketing showcases their deep understanding of the modern internet, search optimization, and future trends. If you're seeking to future-proof your web offerings, look no further than Developerlook. A well-deserved 5 stars all round.",
+      "As a professional gamer, having a reliable keyboard is crucial. The KeyGenius Gaming Pro has exceeded my expectations. The anti-ghosting feature ensures that every keypress is registered, and the ergonomic design keeps my hands comfortable during long gaming sessions. Thank you, KeyGenius!",
   },
 ];
 
@@ -62,7 +64,7 @@ const CustomerReviews = () => {
             Testimonial
           </p>
           <h2 className="text-white text-3xl lg:text-5xl">
-            Client <span className="text-[#F85606]"> reviews</span>
+            Customer <span className="text-[#F85606]"> reviews</span>
           </h2>
         </div>
 
@@ -110,15 +112,12 @@ const CustomerReviews = () => {
                     <p className="font-medium text-[#F85606] text-2xl lg:text-3xl uppercase mb-1 lg:mb-3 ">
                       {review.customerName}
                     </p>
-                    <p className="text-gray uppercase text-lg lg:text-xl text-[#BEBBBB]">
-                      {review.customerDesignation}
-                    </p>
                   </div>
                 </div>
                 <div className="order-1 sm:order-2 w-[300px] sm:w-full flex lg:justify-center">
                   <img
                     style={{
-                      objectFit: "cover",
+                      objectFit: "contain",
                     }}
                     className="rounded-full w-[70%] lg:w-[80%] h-[70%] lg:h-[80%]"
                     src={review.customerImg}

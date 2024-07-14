@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGetProductsQuery } from "@/redux/features/product/productApi";
 import { IoClose } from "react-icons/io5";
 import { Input } from "@/components/ui/input";
+import { AiOutlineSearch } from "react-icons/ai";
 import "./Products.css";
 import {
   Select,
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Link } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
+import ProductsLoading from "@/components/loading/ProductsLoading";
 
 export type TProduct = {
   _id: string;
@@ -122,28 +124,38 @@ export default function Products() {
     return filtered;
   };
 
+  const filteredProducts = applyFilterSortSearch(productsData?.data || []);
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <ProductsLoading />;
   }
 
   if (isError) {
     return <div>Error loading products</div>;
   }
 
-  const filteredProducts = applyFilterSortSearch(productsData?.data || []);
-
   return (
     <section className="lg:mb-40 mb-12 min-h-[calc(100vh-150px)] lg:min-h-[calc(100vh-260px)] container mx-auto px-4 lg:px-0 ">
       <div className="flex justify-end mt-8 lg:mt-16 lg:px-12">
         <div className="flex text-white gap-2 lg:gap-4">
-          <Input
-            style={{ color: "black" }}
-            className=""
-            type="text"
-            placeholder="Search by name, brand."
-            value={search}
-            onChange={handleSearch}
-          />
+          <div className="w-full">
+            <div className="w-full border-[#e36a37] border relative flex rounded items-center">
+              <Input
+                className="bg-[#121212] border-0 border-[#e36a37] text-white outline-0 focus:outline-none"
+                type="text"
+                placeholder="Search by name, brand."
+                value={search}
+                onChange={handleSearch}
+                style={{
+                  boxShadow: "none",
+                  outline: "none",
+                }}
+              />
+              <div className="bg-orange-600 p-1 text-xl mr-1 rounded ">
+                <AiOutlineSearch />
+              </div>
+            </div>
+          </div>
 
           <Select onValueChange={handleSort} value={sort}>
             <SelectTrigger style={{ color: "black" }} className="w-[120px]">
@@ -187,23 +199,22 @@ export default function Products() {
           return (
             <div
               key={_id}
-              className="w-full lg:w-[280px] bg-[#1c1c1edc] border border-gray-500 rounded-lg shadow-lg"
+              className="w-full lg:w-[280px] bg-[#1c1c1edc] border border-gray-500 rounded-lg shadow-lg flex flex-col justify-between"
             >
               <div className="pt-3 px-3 mx-auto">
                 <img
                   src={img}
-                  className="rounded-lg min-h-[253px] bg-contain"
+                  className="rounded-lg h-[253px] bg-contain"
                   alt={name}
                 />
               </div>
               <p className="text-center mt-3 font-medium text-gray-100 mb-1 px-1 lg:px-0">
-                {name.substring(0, 50)}
+                {name.substring(0, 25)} {name.length > 25 && <span>...</span>}
               </p>
               <div className="text-gray-200 flex justify-between py-1 px-4">
                 <p className="bg-[#2F1B11] px-3 text-orange-600 rounded text-sm py-1">
                   {brand}
                 </p>
-
                 <p>
                   <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
                 </p>
@@ -214,6 +225,8 @@ export default function Products() {
               <div className="text-gray-200 flex justify-between py-1 px-4">
                 <p>Available Quantity: {availableQuantity}</p>
               </div>
+              <div className="flex-grow"></div>{" "}
+              {/* This line ensures the button stays at the bottom */}
               <div className="flex justify-center pb-6">
                 <Link
                   to={`/product-details/${_id}`}

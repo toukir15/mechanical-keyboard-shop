@@ -17,7 +17,7 @@ export default function Navbar() {
     0
   );
   return (
-    <div className="bg-[#000000] py-[14px]  md:py-[22px] px-4 lg:px-6 sticky top-0 z-50 ">
+    <div className="bg-[#000000ef] py-[14px]  md:py-[22px] px-4 lg:px-6 sticky top-0 z-50 ">
       <div className="container mx-auto">
         <div className="flex justify-between items-center lg:px-12">
           {/* Logo  */}
@@ -52,11 +52,13 @@ export default function Navbar() {
             </Link>
             <Link to={"/cart"} className="relative">
               <CartSvg height={"h-7"} width={"w-7"} color={"white"} />
-              <div className="bg-[#d5d5d5] h-5 w-5 rounded-full absolute flex justify-center items-center -top-2 -right-2">
-                <span className="text-[12px] text-orange-600">
-                  {totalItems}
-                </span>
-              </div>
+              {totalItems > 0 && (
+                <div className="bg-[#d5d5d5] h-5 w-5 rounded-full absolute flex justify-center items-center -top-2 -right-2">
+                  <span className="text-[12px] text-orange-600">
+                    {totalItems}
+                  </span>
+                </div>
+              )}
             </Link>
             <button
               onClick={() => setIsNavOpen(!isNavOpen)}

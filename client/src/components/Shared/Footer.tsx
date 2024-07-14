@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa6";
 export default function Footer() {
   return (
-    <div className="footer text-white bg-[#000000]">
+    <div className="footer text-white bg-[#000000] gradient-background">
       <div className="container lg:mx-auto px-4 lg:px-12 py-6 lg:py-20">
         <div className="lg:flex justify-between">
           {/* footer first column  */}
@@ -30,24 +30,24 @@ export default function Footer() {
               From 2019, we've empowered 100+ fast-growing <br /> companies
               across 10+ industries with impactful solutions.
             </p>
-            <div className="mt-3 lg:mt-8 flex gap-6">
-              <Link to={"/"}>
-                <button className="bg-white text-blue-500 p-3 text-2xl rounded-full shadow-lg ">
+            <div className="mt-3 lg:mt-8 flex gap-4">
+              <Link to={"https://www.facebook.com/toukir.ahmed.215/"}>
+                <button className="bg-white text-blue-500 p-3 text-xl rounded-full shadow-lg ">
                   <FaFacebookF />
                 </button>
               </Link>
-              <Link to={"/"}>
-                <button className="bg-white text-black p-3 text-2xl rounded-full shadow-lg ">
+              <Link to={"https://github.com/toukir15"}>
+                <button className="bg-white text-black p-3 text-xl rounded-full shadow-lg ">
                   <FaGithub />
                 </button>
               </Link>
-              <Link to={"/"}>
-                <button className="bg-white text-blue-600 p-3 text-2xl rounded-full shadow-lg ">
+              <Link to={"https://www.linkedin.com/in/toukir15/"}>
+                <button className="bg-white text-blue-600 p-3 text-xl rounded-full shadow-lg ">
                   <FaLinkedinIn />
                 </button>
               </Link>
-              <Link to={"/"}>
-                <button className="bg-white text-black p-3 text-2xl rounded-full shadow-lg ">
+              <Link to={"https://x.com/toukir_ahm9211"}>
+                <button className="bg-white text-black p-3 text-xl rounded-full shadow-lg ">
                   <FaXTwitter />
                 </button>
               </Link>

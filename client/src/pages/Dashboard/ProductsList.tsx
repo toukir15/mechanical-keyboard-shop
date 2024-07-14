@@ -8,13 +8,14 @@ import "./ProductList.css";
 
 import { Link, useNavigate } from "react-router-dom";
 import { TProduct } from "../Products";
+import Loading from "@/components/loading/Loading";
 
 export default function ProductsList() {
   const navigate = useNavigate();
   const { data: productsData, isLoading } = useGetProductsQuery(undefined);
   const [deleteProduct] = useDeleteProductMutation();
   if (isLoading) {
-    return <p className="text-white ">Loading...</p>;
+    return <Loading />;
   }
 
   const handleDelete = (id: string) => {
@@ -50,7 +51,6 @@ export default function ProductsList() {
         <table className="w-full text-white mt-8 ">
           <thead className="mb-6">
             <tr>
-              {" "}
               {/* Added missing <tr> element */}
               <th className="text-start pt-4 pb-4 text-gray font-normal ">
                 <p className="bg-[#2F1B11] w-fit py-1  text-orange-600  px-3">

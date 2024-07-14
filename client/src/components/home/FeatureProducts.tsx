@@ -17,13 +17,13 @@ export default function FeatureProducts() {
             product;
           return (
             <div className="w-full md:w-[240px] bg-[#1c1c1edc] border border-gray-500 rounded-lg shadow-lg text-gray-100">
-              <div className="pt-3 px-3 mx-auto min-h-[230px]">
+              <div className="pt-3 px-3 mb-1 mx-auto min-h-[230px]">
                 <img src={img} className="rounded-lg min-h-[230px]" alt="" />
               </div>
-              <p className="md:text-center font-medium px-5 md:px-1 mt-2 md:mt-0 ">
-                {name.substring(0, 40)}
+              <p className="font-medium px-5 md:px-4 mt-2 md:mt-0 ">
+                {name.substring(0, 20)} {name.length > 20 && <span>...</span>}
               </p>
-              <div className="px-5 md:mt-2">
+              <div className="px-5 text-gray-300">
                 <div>
                   <span> Brand:</span> <span> {brand}</span>
                 </div>
@@ -39,7 +39,7 @@ export default function FeatureProducts() {
                     readOnly={true}
                   />
                 </div>
-                <div className="text-gray-200 flex justify-between p">
+                <div className="text-gray-300 flex justify-between p">
                   <p>Available Quantity: {availableQuantity}</p>
                 </div>
               </div>
