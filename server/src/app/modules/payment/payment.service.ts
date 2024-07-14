@@ -54,8 +54,8 @@ const createPayment = async (carts: TCart, customerData: TCustomer) => {
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: lineItems,
-    success_url: 'http://localhost:5173',
-    cancel_url: 'http://localhost:5173/products',
+    success_url: 'https://mechanical-keyboard-shop-client.onrender.com/',
+    cancel_url: 'https://mechanical-keyboard-shop-client.onrender.com/products',
     customer: customer.id,
   })
   // return { sessionId: session.id }
