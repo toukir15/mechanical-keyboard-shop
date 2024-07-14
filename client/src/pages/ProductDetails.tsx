@@ -15,7 +15,7 @@ export default function ProductDetails() {
   const url = window.location.href;
   const parts = url.split("/");
   const id = parts[parts.length - 1];
-  const [addCart] = useAddCartMutation();
+  const [addCart, { isLoading: isAddCartLoading }] = useAddCartMutation();
   const { data: productData, isLoading: isProductLoading } =
     useGetProductQuery(id);
   const { data: cartsData, isLoading: isCartLoading } =
@@ -26,7 +26,7 @@ export default function ProductDetails() {
   );
   const [counter, setCounter] = useState(1);
 
-  if (isProductLoading || isCartLoading) {
+  if (isProductLoading || isCartLoading || isAddCartLoading) {
     return <Loading />;
   }
 
