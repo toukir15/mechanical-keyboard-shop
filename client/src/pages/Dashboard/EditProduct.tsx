@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Input } from "@/components/ui/input";
-import PuffLoader from "react-spinners/PuffLoader";
 import {
   useEditProductMutation,
   useGetProductQuery,
@@ -8,6 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import TransparentLoading from "@/components/loading/TransparentLoading";
 
 interface AddImageState {
   placeholder?: string;
@@ -202,11 +202,7 @@ export default function EditProduct() {
           </div>
         </form>
       </div>
-      {isLoading && (
-        <div className="text-white fixed top-0 right-0 left-0 bottom-0 bg-[#4f4c4c9f] flex justify-center items-center">
-          <PuffLoader color="#EA580C" size={100} />
-        </div>
-      )}
+      {isLoading && <TransparentLoading />}
     </>
   );
 }
