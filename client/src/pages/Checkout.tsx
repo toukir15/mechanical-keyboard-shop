@@ -6,13 +6,13 @@ import { useForm } from "react-hook-form";
 import { TCart } from "./Cart";
 import { useState } from "react";
 import Loading from "@/components/loading/Loading";
-import { useStripe } from "@stripe/react-stripe-js";
+// import { useStripe } from "@stripe/react-stripe-js";
 
 export default function Checkout() {
   const { data: cartsData } = useGetCartsQuery(undefined);
   const [addPaymentSession] = useAddPaymentSessionMutation();
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
-  const stripe = useStripe();
+  // const stripe = useStripe();
 
   const totalPrice = cartsData?.data.reduce(
     (accumulator: number, value: TCart) => {
@@ -36,12 +36,12 @@ export default function Checkout() {
         products: cartsData?.data,
         customer: data,
       });
-      const { sessionId } = response.data.data;
-
-      await stripe
-        ?.redirectToCheckout({ sessionId })
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      // const { sessionId } = response.data.data;
+      // await stripe
+      //   ?.redirectToCheckout({ sessionId })
+      //   .then((data) => console.log(data))
+      //   .catch((err) => console.log(err));
+      window.location.href = response.data.data.url;
       setIsCheckoutLoading(false);
     } catch (err) {
       setIsCheckoutLoading(false);

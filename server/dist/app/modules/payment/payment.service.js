@@ -18,7 +18,6 @@ const config_1 = __importDefault(require("../../config"));
 const stripe = new stripe_1.default(config_1.default.stripe_secret);
 const createPayment = (carts, customerData) => __awaiter(void 0, void 0, void 0, function* () {
     const lineItems = [];
-    console.log('createPaymentSession');
     for (const product of carts) {
         const stripeProduct = yield stripe.products.create({
             name: product.name,
@@ -48,9 +47,11 @@ const createPayment = (carts, customerData) => __awaiter(void 0, void 0, void 0,
         cancel_url: 'http://localhost:5173/products',
         customer: customer.id,
     });
-    return { sessionId: session.id };
+    // return { sessionId: session.id }
+    return session;
 });
-const endpointSecret = 'whsec_2305593bfaeeb4dc5073fe220e8c92b9702b55bc9a5b527d0ed2715ab8c3f7b5';
+// const endpointSecret =
+//   'whsec_2305593bfaeeb4dc5073fe220e8c92b9702b55bc9a5b527d0ed2715ab8c3f7b5'
 const webhook = () => __awaiter(void 0, void 0, void 0, function* () {
     // console.log(sig)
     // console.log('webhook')

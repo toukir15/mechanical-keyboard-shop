@@ -24,7 +24,7 @@ export default function ProductDetails() {
   const cart = cartsData?.data.find(
     (data: { product: string }) => data.product === id
   );
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   if (isProductLoading || isCartLoading) {
     return <Loading />;

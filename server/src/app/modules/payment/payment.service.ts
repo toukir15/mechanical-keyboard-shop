@@ -25,8 +25,6 @@ type TCustomer = {
 const createPayment = async (carts: TCart, customerData: TCustomer) => {
   const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = []
 
-  console.log('createPaymentSession')
-
   for (const product of carts) {
     const stripeProduct = await stripe.products.create({
       name: product.name,
@@ -60,10 +58,11 @@ const createPayment = async (carts: TCart, customerData: TCustomer) => {
     cancel_url: 'http://localhost:5173/products',
     customer: customer.id,
   })
-  return { sessionId: session.id }
+  // return { sessionId: session.id }
+  return session
 }
-const endpointSecret =
-  'whsec_2305593bfaeeb4dc5073fe220e8c92b9702b55bc9a5b527d0ed2715ab8c3f7b5'
+// const endpointSecret =
+//   'whsec_2305593bfaeeb4dc5073fe220e8c92b9702b55bc9a5b527d0ed2715ab8c3f7b5'
 
 const webhook = async () => {
   // console.log(sig)
