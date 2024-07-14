@@ -53,28 +53,28 @@ const updateProductIntoDB = async (
   }
 
   // Initialize modifiedPayload with the original payload
-  // let modifiedPayload = { ...payload }
+  let modifiedPayload = { ...payload }
 
   // If the file is provided, upload it to Cloudinary
-  // if (file) {
-  //   const cloudinayImgData = await sendImageToCloudinary(
-  //     `${payload.brand!}${payload.availableQuantity}${payload.rating}`,
-  //     file.path as string,
-  //   )
+  if (file) {
+    const cloudinayImgData = await sendImageToCloudinary(
+      `${payload.brand!}${payload.availableQuantity}${payload.rating}`,
+      file.path as string,
+    )
 
-  // If the image upload is successful, update the img property
-  //   if (cloudinayImgData?.secure_url) {
-  //     modifiedPayload = {
-  //       ...payload,
-  //       img: cloudinayImgData.secure_url as string,
-  //     }
-  //   }
-  // }
+    // If the image upload is successful, update the img property
+    if (cloudinayImgData?.secure_url) {
+      modifiedPayload = {
+        ...payload,
+        img: cloudinayImgData.secure_url as string,
+      }
+    }
+  }
 
   // Update the product in the database
   const updateProduct = await Product.findByIdAndUpdate(
     isProductExist._id,
-    payload,
+    modifiedPayload,
     {
       new: true,
     },

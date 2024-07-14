@@ -47,23 +47,17 @@ const updateProductIntoDB = (id, payload, file) => __awaiter(void 0, void 0, voi
         throw new Error('Product is not available');
     }
     // Initialize modifiedPayload with the original payload
-    // let modifiedPayload = { ...payload }
+    let modifiedPayload = Object.assign({}, payload);
     // If the file is provided, upload it to Cloudinary
-    // if (file) {
-    //   const cloudinayImgData = await sendImageToCloudinary(
-    //     `${payload.brand!}${payload.availableQuantity}${payload.rating}`,
-    //     file.path as string,
-    //   )
-    // If the image upload is successful, update the img property
-    //   if (cloudinayImgData?.secure_url) {
-    //     modifiedPayload = {
-    //       ...payload,
-    //       img: cloudinayImgData.secure_url as string,
-    //     }
-    //   }
-    // }
+    if (file) {
+        const cloudinayImgData = yield (0, sendImageToCloudinary_1.sendImageToCloudinary)(`${payload.brand}${payload.availableQuantity}${payload.rating}`, file.path);
+        // If the image upload is successful, update the img property
+        if (cloudinayImgData === null || cloudinayImgData === void 0 ? void 0 : cloudinayImgData.secure_url) {
+            modifiedPayload = Object.assign(Object.assign({}, payload), { img: cloudinayImgData.secure_url });
+        }
+    }
     // Update the product in the database
-    const updateProduct = yield product_model_1.Product.findByIdAndUpdate(isProductExist._id, payload, {
+    const updateProduct = yield product_model_1.Product.findByIdAndUpdate(isProductExist._id, modifiedPayload, {
         new: true,
     });
     return updateProduct;

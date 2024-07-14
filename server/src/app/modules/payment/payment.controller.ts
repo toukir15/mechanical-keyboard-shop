@@ -14,4 +14,16 @@ const createPayment = catchAsync(async (req, res, next) => {
     data: result,
   })
 })
-export const PaymentControllers = { createPayment }
+
+const webhook = catchAsync(async (req, res, next) => {
+  const sig = req.headers['stripe-signature']
+  const result = await PaymentServices.webhook()
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Create checkout session successfully',
+    data: result,
+  })
+})
+
+export const PaymentControllers = { createPayment, webhook }

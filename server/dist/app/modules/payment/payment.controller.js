@@ -28,4 +28,14 @@ const createPayment = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter
         data: result,
     });
 }));
-exports.PaymentControllers = { createPayment };
+const webhook = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const sig = req.headers['stripe-signature'];
+    const result = yield payment_service_1.PaymentServices.webhook();
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Create checkout session successfully',
+        data: result,
+    });
+}));
+exports.PaymentControllers = { createPayment, webhook };
