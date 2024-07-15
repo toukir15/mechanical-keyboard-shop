@@ -53,6 +53,17 @@ export default function Cart() {
     deleteCart(id);
   };
 
+  window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = "";
+
+    const confirmationMessage =
+      "Are you sure you want to leave this page? Your changes may not be saved.";
+    (e || window.event).returnValue = confirmationMessage;
+
+    return confirmationMessage;
+  });
+
   return (
     <>
       <div className="text-white lg:flex gap-8 px-4 lg:px-12 mb-16 min-h-[calc(100vh-120px)] container mx-auto">
