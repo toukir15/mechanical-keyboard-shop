@@ -6,7 +6,7 @@ import { Rating } from "@smastrom/react-rating";
 export default function FeatureProducts() {
   const { data: productsData } = useGetProductsQuery(undefined);
   return (
-    <section className=" mb-20 lg:mb-40 px-4">
+    <section className=" mb-20 lg:mt-40 lg:mb-40 px-4">
       <h1 className="text-2xl lg:text-5xl font-medium lg:leading-[60px] text-white ">
         <span className="text-[#F85606]">Must-Have</span> Keyboards <br /> of
         the Season

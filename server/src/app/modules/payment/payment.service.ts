@@ -1,5 +1,6 @@
 import Stripe from 'stripe'
 import config from '../../config'
+import { Request } from 'express'
 const stripe = new Stripe(config.stripe_secret as string)
 
 type TCart = {
@@ -64,24 +65,14 @@ const createPayment = async (carts: TCart, customerData: TCustomer) => {
 // const endpointSecret =
 //   'whsec_2305593bfaeeb4dc5073fe220e8c92b9702b55bc9a5b527d0ed2715ab8c3f7b5'
 
-const webhook = async () => {
+const webhook = async (req: Request, sig: string) => {
   // console.log(sig)
   // console.log('webhook')
   // let event
   // try {
-  //   event = stripe.webhooks.constructEvent(body, sig, endpointSecret)
+  //   event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret)
   // } catch (err) {
   //   console.log(`⚠️  Webhook signature verification failed:`)
-  // }
-  // Handle the event
-  // switch (event.type) {
-  //   case 'payment_intent.succeeded':
-  //     const paymentIntent = event.data.object
-  //     console.log(`PaymentIntent was successful!`)
-  //     break
-  //   // ... handle other event types
-  //   default:
-  //     console.log(`Unhandled event type ${event.type}`)
   // }
 }
 

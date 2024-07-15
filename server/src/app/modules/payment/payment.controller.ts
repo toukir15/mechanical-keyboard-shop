@@ -17,7 +17,7 @@ const createPayment = catchAsync(async (req, res, next) => {
 
 const webhook = catchAsync(async (req, res, next) => {
   const sig = req.headers['stripe-signature']
-  const result = await PaymentServices.webhook()
+  const result = await PaymentServices.webhook(req, sig)
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
